@@ -1,0 +1,85 @@
+# Python and Django Installation
+# To check python version
+	python3 --version
+
+# Install Python3 
+	sudo apt install python3
+
+# install pip 
+	sudo apt install python3-pip -y
+
+# Install Django
+	sudo pip3 install Django 
+
+# Check Django version
+	django-admin --version
+--------------------------------------------------------------
+
+# Create new django-project 
+	django-admin startproject empdetailsproject
+
+# Create Django APP
+	python3 manage.py startapp empdetailsapplication
+
+	update about app in setting.py in project dirctory
+	INSTALLED_APPS = [
+    ...
+    'empdetailsapplication',
+    ...
+    ]
+    
+# Perform database migrations: 
+	python3 manage.py makemigrations empdetailsapplication
+
+# Apply migrations:
+   python3 manage.py migrate	
+
+# User creation with CLI
+  python3 manage.py createsuperuser --username=admin --email=e00049.02aug2021@gmail.com --noinput
+
+# User creation SHELL
+  python3 manage.py shell
+  from django.contrib.auth.models import User
+  username = 'admin'
+  user = User.objects.get(username=username)
+  user.delete()
+
+# User Creation with interactive mode
+  python3 manage.py createsuperuser 
+    
+# update to access from anywhere
+  ALLOWED_HOSTS = ["*"]
+
+# Run the Development server 
+  python3 manage.py runserver 0.0.0.0:8000
+
+
+--------------------------------------------------------------
+
+settings.py
+
+	from pathlib import Path
+	import os
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+	BASE_DIR = Path(__file__).resolve().parent.parent
+	BASE_DIR2    = os.path.dirname(os.path.abspath(__file__))
+	TEMPLATE_DIR = os.path.join(BASE_DIR2, 'templates')  
+	STATIC_DIR   = os.path.join(BASE_DIR2, 'static')
+
+# Template directory location. 
+	TEMPLATES = [
+	    {
+	        'DIRS': [TEMPLATE_DIR,],
+
+# update about app in setting.py in project dirctory
+	INSTALLED_APPS = [
+    ...
+    'empdetailsapplication',
+    ...
+    ]        
+
+# update to access from anywhere
+  ALLOWED_HOSTS = ["*"]
+
+------------------------------------------------------------------------- 
