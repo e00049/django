@@ -11,3 +11,5 @@ def fetch_values(request):
     delete_user      = YourTable.objects.get(id=1).delete()
 
     Profile.objects.filter(phone_number=phone_number).update(otp=str(random.randint(100000, 999999)))
+    
+    
