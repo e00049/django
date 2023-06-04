@@ -7,3 +7,4 @@ class apptrainersportal(admin.ModelAdmin):
     list = [ 'name', 'price' ]
 
 admin.site.register(Product, apptrainersportal)
+admin.site.register(Product)
