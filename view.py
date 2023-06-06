@@ -101,4 +101,10 @@ def user_detail(request, uid):
 #         return Response(response_data, status=status.HTTP_201_CREATED)
 #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+        url      = (f"https://2factor.in/API/V1/{settings.TWO_FACTOR_API_KEY}/SMS/{mobile_number}/AUTOGEN2/:OTP1")
+        payload  = {}
+        headers  = {}
+        response = requests.request("GET", url, headers=headers, data=payload)
+        otp_user  = (json.loads(response.text))['OTP']
+        User.objects.filter(mobile_number=mobile_number).update(otp_user)
+        
