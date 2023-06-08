@@ -70,7 +70,11 @@ def user_detail(request, uid):
         user.delete()
         return Response({'message': 'User deleted successfully'})
 
-
+    otp             = models.CharField(max_length=6, null=True, blank=True)
+    expiration_time = models.DateTimeField(auto_now=True)
+    expiration_time = timezone.now() + timezone.timedelta(minutes=5)
+    
+    
 # from rest_framework import generics
 # from .models import User
 # from .serializers import UserSerializer
