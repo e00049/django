@@ -11,3 +11,5 @@ DATABASES = {
         }
     }
 }
+
+AUTH_USER_MODEL = 'myapp.User'
