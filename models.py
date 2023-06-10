@@ -1,5 +1,10 @@
+""" 
+Django Models with creation normal and superuser
+"""
+
 from django.db import models
 from django.utils import timezone
+
 from datetime import timedelta
 
 
@@ -12,3 +17,5 @@ class User(models.Model):
     def __str__(self):
         x = '%s' % (self.mobile_number)
         return x
+
+    
