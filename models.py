@@ -26,5 +26,11 @@ class User(models.Model):
             'refresh': str(refresh),
             'access': str(refresh.access_token),
         }
-        
-    
+
+
+class MyModel(models.Model):	
+	user             = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True, editable=False)
+    tf_location      = models.CharField(max_length=5000, null=True, blank=True)
+    created_at       = models.DateTimeField(auto_now_add=True)
+    updated_at       = models.DateTimeField(auto_now=True)
+
