@@ -47,3 +47,9 @@ schema_view = get_schema_view(
 
 # URL - https://django-rest-swagger.readthedocs.io/en/latest/
     
+        path('register/', RegisterAPIView.as_view(), name="register"),
+        path('send-otp/', SendOTPView.as_view(), name='send-otp'),
+
+    
+
+    
