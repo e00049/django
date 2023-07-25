@@ -111,4 +111,8 @@ def user_detail(request, uid):
         response = requests.request("GET", url, headers=headers, data=payload)
         otp_user  = (json.loads(response.text))['OTP']
         User.objects.filter(mobile_number=mobile_number).update(otp_user)
-        
+
+            payload = [ key : value, key : value ]
+            for key, value in payload.items():
+                print(f"{key}: {value}")        
+                print("I am here in for loop ...")
