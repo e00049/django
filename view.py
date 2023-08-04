@@ -116,3 +116,11 @@ def user_detail(request, uid):
             for key, value in payload.items():
                 print(f"{key}: {value}")        
                 print("I am here in for loop ...")
+
+# Filter: http://localhost:8000/api/profiles/?user_id__icontains=7
+class ProfileListView(generics.ListAPIView):   # Filter 
+    queryset = Profile.objects.all().order_by('-lastModified') 
+    serializer_class = ProfileSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filterset_class = ProfileFilter
+
