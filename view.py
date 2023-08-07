@@ -124,3 +124,35 @@ class ProfileListView(generics.ListAPIView):   # Filter
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_class = ProfileFilter
 
+
+
+Pagination:
+
+# http://192.168.1.10:8000/api/users/?search= # Get all data
+# http://192.168.1.10:8000/api/users/?page=4   # Get Perticular page 
+class TrainerProfileListCreateAPIView(generics.ListCreateAPIView):  # Pagination 
+
+    # authentication_classes = [TokenAuthentication, JWTAuthentication]
+    # permission_classes     = [IsAuthenticated, IsTrainerUser | IsCompanyUser ]
+
+    queryset = UserProfile.objects.all().order_by('-lastModified') 
+    serializer_class = UserProfileSerializer
+    pagination_class = UserProfilePagination 
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.order_by('-lastModified') 
+
+    def list(self, request, *args, **kwargs):
+        try:
+            return super().list(request, *args, **kwargs)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def create(self, request, *args, **kwargs):
+        try:
+            return super().create(request, *args, **kwargs)
+        except serializers.ValidationError as e:
+            return Response({'errors': e.detail}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
