@@ -1,0 +1,13 @@
+        # new_user = authenticate(email=email, password=os.environ.get('SOCIAL_SECRET'))
+        # print("55555555", new_user)
+        new_user = User.objects.get(email=email)
+        new_user.check_password(os.environ.get('SOCIAL_SECRET'))
+        Token.objects.create(user=new_user)
+        new_token = list(Token.objects.filter(user_id=new_user).values("key"))
+
+        return {
+            'email': new_user.email,
+            'username': new_user.username,
+            'tokens': str(new_token[0]['key']),
+            'group': group.name            
+        }
