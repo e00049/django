@@ -1,3 +1,20 @@
-sudo apt-get install pkg-config python3-pip mysql-server python3-dev default-libmysqlclient-dev npm -y
-pip3 install Django djangorestframework phonenumbers djangorestframework-simplejwt djangorestframework-jwt  \
-             mysqlclient django-cors-headers python-dotenv django-filter django-rest-swagger drf-yasg python-dotenv
+python-dev-tools==2023.3.24
+pip
+Django==4.2.4
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.2.2
+djangorestframework-jwt-5==1.13.0
+phonenumbers==8.13.18
+django-cors-headers==4.2.0
+python-dotenv==1.0.0
+django-filter==23.2
+django-rest-swagger==2.2.0
+drf-yasg==1.21.7
+jsonfield2==4.0.0.post0
+sendgrid==6.10.0
+google-auth==2.22.0
+social-auth-app-django==5.2.0
+PyJWT==2.8.0
+djoser==2.2.0
+django-allauth==0.54.0
+python-decouple==3.8
