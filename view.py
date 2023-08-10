@@ -156,3 +156,7 @@ class TrainerProfileListCreateAPIView(generics.ListCreateAPIView):  # Pagination
             return Response({'errors': e.detail}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Share more than one value with add on Views to Serilizer 
+  serializer = self.serializer_class(data=request.data, context={'groups': groups_value })  
+
