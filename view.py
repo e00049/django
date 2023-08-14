@@ -2,7 +2,7 @@ def fetch_values(request):
 
     all_objects      = YourTable.objects.all() 	    # Retrieve all objects from the table
 
-    filtered_objects = YourTable.objects.filter(phone_number = 7358220899)     # Retrieve objects based on a condition
+    filtered_objects = YourTable.objects.filter(phone_number = 7358445899)     # Retrieve objects based on a condition
 
     single_object    = YourTable.objects.get(id=some_id)     # Retrieve a single object
 
