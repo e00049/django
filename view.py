@@ -169,3 +169,6 @@ def is_valid_mobile_number(mobile_number):
         return phonenumbers.is_valid_number(parsed_number)
     except phonenumbers.NumberParseException:
         return False
+
+    url = ("https://2factor.in/API/V1/{}/SMS/{}/AUTOGEN2/").format(SMS_AUTH_KEY, mobile_number) 
+    
