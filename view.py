@@ -174,5 +174,5 @@ def is_valid_mobile_number(mobile_number):
     
 
 lookup_field =  'Name'
-192.168.1.1:8000/api/student/name/ - get, put based on name field
+192.168.1.1:8000/api/student/name/ - get, put based on name field 
 
