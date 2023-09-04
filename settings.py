@@ -21,3 +21,23 @@ CREATE USER 'e00049'@'%' IDENTIFIED BY 'Google@123!!';
 GRANT ALL PRIVILEGES ON *.* TO 'e00049'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 EXIT;
+
+# 
+REDIS_HOST = os.environ.get('REDIS_HOST')
+REDIS_PORT = os.environ.get('REDIS_PORT')
+REDIS_PASSWD = os.environ.get('REDIS_PASSWD')
+REDIS_DB = 1
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": f"redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB}",
+        "OPTIONS": {
+             "PASSWORD": f"{REDIS_PASSWD}",    
+             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
