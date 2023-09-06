@@ -171,8 +171,19 @@ def is_valid_mobile_number(mobile_number):
         return False
 
     url = ("https://2factor.in/API/V1/{}/SMS/{}/AUTOGEN2/").format(SMS_AUTH_KEY, mobile_number) 
+    url = f"https://2factor.in/API/V1/{2FACTOR_AUTH_KEY}/SMS/{MOBILE_NUMBER}/AUTOGEN2" - String formater 
     
 
 lookup_field =  'Name'
 192.168.1.1:8000/api/student/name/ - get, put based on name field 
 
+
+def record_search(request):
+    if request.method == 'POST':
+        query = request.POST.get('query')
+        if query:
+            AnonymousSearch.objects.create(query=query)
+            return JsonResponse({'message': 'Search query recorded successfully'})
+        else:
+            return JsonResponse({'error': 'Invalid data'}, status=400)
+            
