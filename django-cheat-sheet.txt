@@ -87,3 +87,7 @@ settings.py
  pip freeze > requirements.txt
  pip3 install -r requirements.txt
 
+
+python3 manage.py showmigrations myapp
+python3 manage.py migrate myapp <migration_number>
+
