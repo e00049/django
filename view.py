@@ -187,3 +187,36 @@ def record_search(request):
         else:
             return JsonResponse({'error': 'Invalid data'}, status=400)
             
+
+# Backend to S3 
+class FileUploadAPIView(ListCreateAPIView):
+    def post(self, request, *args, **kwargs):
+        try:
+            uploaded_files = request.FILES.getlist("files") 
+
+            if not uploaded_files:
+                return Response({'error': 'No files were provided for upload'}, status=status.HTTP_400_BAD_REQUEST)
+
+            s3_client = create_s3_client()
+
+            success_messages = []
+            error_messages   = []
+
+            for uploaded_file in uploaded_files:
+                s3_object_key = f'{AWS_S3_ABS_LOCATION}/{uploaded_file.name}' 
+
+                try:
+                    s3_client.upload_fileobj(uploaded_file, S3_BUCKET_NAME, s3_object_key)
+                    success_messages.append(f'{uploaded_file.name} uploaded to S3 successfully')
+                except Exception as e:
+                    print(f"Error uploading {uploaded_file.name}: {str(e)}")
+                    error_messages.append(f"Error uploading {uploaded_file.name}: {str(e)}")
+
+            response_data = {'success_messages': success_messages, 'error_messages': error_messages }
+
+            return Response(response_data, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            print("Error:", str(e))
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+			
