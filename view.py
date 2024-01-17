@@ -219,4 +219,11 @@ class FileUploadAPIView(ListCreateAPIView):
         except Exception as e:
             print("Error:", str(e))
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-			
+
+
+to_update_jobs = Jobs.objects.filter(jobPKID=jobPKID)
+
+for job in to_update_jobs:
+	previous_status = job.current_state
+	Jobs.objects.filter(jobPKID=jobPKID).update(current_status="1", previous_status=previous_status) 
+	
