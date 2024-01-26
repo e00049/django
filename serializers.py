@@ -31,3 +31,20 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
                     pass
 
         return user
+
+
+# Types of Serializer Classes in Django REST Framework:
+
+# 01. ModelSerializer
+# 02. Serializer
+
+# Types of Serializer Class Functions:
+
+    # create (self, validated_data):
+    # validate (self, attrs):
+    # save(self, **kwargs):
+    # get_tokens(self, obj):
+    # update(self, instance, validated_data):
+    # is_valid ()
+    # save()
+
