@@ -226,4 +226,11 @@ to_update_jobs = Jobs.objects.filter(jobPKID=jobPKID)
 for job in to_update_jobs:
 	previous_status = job.current_state
 	Jobs.objects.filter(jobPKID=jobPKID).update(current_status="1", previous_status=previous_status) 
+
+
+class_name = Classes.Objects.get(classRoomNumber=class_room)
+
+for class_name.section in [ "a", "b", "c" ]:
+	my_dict = { 'name' : class_name.studnet }
+	
 	
