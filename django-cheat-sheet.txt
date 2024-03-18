@@ -16,10 +16,10 @@
 --------------------------------------------------------------
 
 # Create new django-project 
-	django-admin startproject empdetailsproject
+	django-admin startproject myproject
 
 # Create Django APP
-	python3 manage.py startapp empdetailsapplication
+	python3 manage.py startapp myapp
 
 	update about app in setting.py in project dirctory
 	INSTALLED_APPS = [
