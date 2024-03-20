@@ -1,0 +1,1 @@
+sudo apt-get install libcairo2-dev build-essential pkg-config libmysqlclient-dev mysqlclient==2.2.0
