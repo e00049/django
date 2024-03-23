@@ -29,10 +29,8 @@
     ]
     
 # Perform database migrations: 
-	python3 manage.py makemigrations empdetailsapplication
-
-# Apply migrations:
-   python3 manage.py migrate	
+	python3 manage.py makemigrations myapp; python3 manage.py migrate	
+ 
 
 # User creation with CLI
   python3 manage.py createsuperuser --username=admin --email=e00049.02aug2021@gmail.com --noinput
